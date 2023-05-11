@@ -1,1 +1,168 @@
-<p>personal-information-form works!</p>
+<div class="personal-information">
+    
+        <form>
+          <div>
+            <h2>Persönliche Angaben</h2>
+          </div>
+          
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Mann</mat-radio-button>
+            <mat-radio-button value="2">Frau</mat-radio-button>
+          </mat-radio-group>
+
+          <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
+            <mat-form-field appearance="outline">
+              <mat-label>Vorname</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="second-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Adresse</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>PLZ</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Ort</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+           
+          </div>
+
+          <div class="third-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Vorname</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            
+          </div>
+
+          <div class="fourth-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Zivilstand</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
+                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
+                  {{civilstatus.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            
+
+            <mat-form-field appearance="fill">
+              <mat-label>Nationalität</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
+                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
+                  {{civilstatus.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Konfession</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
+                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
+                  {{civilstatus.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Heimatort</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+           
+          </div>
+
+          <div class="fifth-row">
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Tel.</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>E-Mail</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+           
+          </div>
+
+          <div class="sixth-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Finma-Nummer</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Cicero-Nummer</mat-label>
+              <input matInput placeholder="Placeholder">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Bewilligung</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
+                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
+                  {{civilstatus.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+          
+          <p>Haben Sie Kinder?</p>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Ja</mat-radio-button>
+            <mat-radio-button value="2">Nein</mat-radio-button>
+          </mat-radio-group>
+
+          <p>Increment button</p>
+
+          <p>Haben Sie eine Nebenbeschäftigung?</p>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Ja</mat-radio-button>
+            <mat-radio-button value="2">Nein</mat-radio-button>
+          </mat-radio-group>
+          
+
+
+          <app-side-job-form></app-side-job-form>
+          <app-spouse-form></app-spouse-form>
+          <app-child-form></app-child-form>
+
+          <p>File Upload Strafregisterauszug</p>
+          <p>File Upload Betreibungsregisterauszug</p>
+          <p>File Upload Ansässigkeitsbescheinigung</p>
+          <p>File Upload ID/Ausweis</p>
+          
+        </form>
+      
+  </div>
