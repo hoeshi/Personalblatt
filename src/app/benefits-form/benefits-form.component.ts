@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./benefits-form.component.css']
 })
 export class BenefitsFormComponent implements OnInit {
-
+  selected: string = '';
+  
   constructor() { }
 
   ngOnInit(): void {
