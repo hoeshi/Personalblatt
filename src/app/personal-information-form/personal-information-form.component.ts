@@ -11,7 +11,8 @@ interface CivilStatus {
   styleUrls: ['./personal-information-form.component.css']
 })
 export class PersonalInformationFormComponent implements OnInit {
-  selectedValue: string = "";
+  selectedStatus: string = "";
+  selectedValue: string="";
 
   civilstatuses: CivilStatus[] = [
     {value: 'ledig-0', viewValue: 'ledig'},

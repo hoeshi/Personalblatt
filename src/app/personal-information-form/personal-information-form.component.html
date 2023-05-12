@@ -66,7 +66,7 @@
           <div class="fourth-row">
             <mat-form-field appearance="fill">
               <mat-label>Zivilstand</mat-label>
-              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
+              <mat-select [(ngModel)]="selectedStatus" name="civilstatus">
                 <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
                   {{civilstatus.viewValue}}
                 </mat-option>
@@ -129,13 +129,17 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Bewilligung</mat-label>
-              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
+              <mat-select [(ngModel)]="selectedStatus" name="civilstatus">
                 <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
                   {{civilstatus.viewValue}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
 
+          </div>
+          
+          <div *ngIf="selectedStatus === 'verheiratet-1'">
+            <app-spouse-form></app-spouse-form>
           </div>
           
 

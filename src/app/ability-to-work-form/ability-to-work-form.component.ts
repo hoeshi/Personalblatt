@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ability-to-work-form.component.css']
 })
 export class AbilityToWorkFormComponent implements OnInit {
-
+  selected: string = '';
   constructor() { }
 
   ngOnInit(): void {

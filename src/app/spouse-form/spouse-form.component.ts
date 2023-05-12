@@ -10,6 +10,7 @@ interface CivilStatus {
 })
 export class SpouseFormComponent implements OnInit {
   selectedValue: string = "";
+  selected: string ='';
 
   civilstatuses: CivilStatus[] = [
     {value: 'ledig-0', viewValue: 'ledig'},

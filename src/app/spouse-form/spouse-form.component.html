@@ -64,12 +64,12 @@
     </div>
 
       <p>Hat Ihr Ehepartner eine Beschäftigung?</p>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Ja</mat-radio-button>
-        <mat-radio-button value="2">Nein</mat-radio-button>
+      <mat-radio-group [(ngModel)]="selected" name="radioSelected" aria-label="Select an option">
+        <mat-radio-button value="yes">Ja</mat-radio-button>
+        <mat-radio-button value="no">Nein</mat-radio-button>
       </mat-radio-group>
 
-      
+      <div *ngIf="selected === 'yes'">
       <form action="">
         <div class="fourth-row">
           <mat-form-field appearance="outline">
@@ -98,6 +98,7 @@
                   <mat-radio-button value="3">Rente</mat-radio-button>
                 </mat-radio-group>
         </form>
+      </div>
       <p>Upload ID</p>
       <p>Upload AHV</p>
     </form>
