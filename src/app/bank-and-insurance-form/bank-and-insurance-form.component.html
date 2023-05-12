@@ -1,1 +1,66 @@
-<p>bank-and-insurance-form works!</p>
+<div class="child-form">
+    <form>
+      <div>
+        <h2>Versicherungs- und Bankdaten</h2>
+      </div>
+      
+      <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
+        <mat-form-field appearance="outline">
+          <mat-label>AHV</mat-label>
+          <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>IBAN</mat-label>
+          <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        
+        
+      </div>
+
+      <div class="second-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Bankname</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Adresse</mat-label>
+          <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>PLZ</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>        
+      </div>
+
+      <div class="third-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Ort</mat-label>
+            <input matInput placeholder="Placeholder">
+          </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Monats-/Stundenlohn (Brutto)</mat-label>
+          <input matInput placeholder="Placeholder">
+        </mat-form-field>
+  
+      </div>
+    </form>
+    
+    <p>Ist die versicherte Person voll arbeitsfähig?</p>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Ja</mat-radio-button>
+        <mat-radio-button value="2">Nein</mat-radio-button>
+      </mat-radio-group>
+
+      <p>Upload Arbeitsunfähigkeitsbescheinigung</p>
+      
+      
+      
+
+      <p>Upload AHV</p>
+      <p>Upload Bankkarte</p>
+</div>

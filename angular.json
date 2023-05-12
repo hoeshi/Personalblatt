@@ -27,7 +27,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "../path/to/mdc-web/dist/material-components-web.min.js"
+              
             ]
           },
           "configurations": {

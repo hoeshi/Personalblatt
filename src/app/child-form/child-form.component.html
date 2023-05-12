@@ -1,10 +1,18 @@
 <div class="child-form">
+    <p>Haben Sie Kinder?</p>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Ja</mat-radio-button>
+        <mat-radio-button value="2">Nein</mat-radio-button>
+      </mat-radio-group>
+
+        <p>Increment button</p>
+
     <form>
       <div>
         <h2>Angaben Kinder</h2>
       </div>
       
-      <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
+      <div class="first-row">
         <mat-form-field appearance="outline">
           <mat-label>Vorname</mat-label>
           <input matInput placeholder="Placeholder">
@@ -25,14 +33,6 @@
       </div>
 
       <div class="second-row">
-        <mat-form-field appearance="fill">
-            <mat-label>Konfession</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="civilstatus">
-              <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                {{civilstatus.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Ausbildungsstätte</mat-label>
