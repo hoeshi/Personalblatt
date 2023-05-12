@@ -20,6 +20,9 @@ import { AgencyFormComponent } from './agency-form/agency-form.component';
 import { AbilityToWorkFormComponent } from './ability-to-work-form/ability-to-work-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BankAndInsuranceFormComponent,
     AgencyFormComponent,
     AbilityToWorkFormComponent,
+
     
   ],
   imports: [
@@ -44,7 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatRadioModule
+    MatRadioModule,
     
   ],
   providers: [],
