@@ -1,46 +1,47 @@
-<div class="child-form">
-    <form>
-      <div>
-        <h2>Agentur</h2>
-      </div>
-      
-      <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
-        <mat-form-field appearance="outline">
-          <mat-label>Funktion</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
+<div class="agencyForm">
+  <h2>Agentur</h2>
+  <form [formGroup]="agencyForm">
+    <div class="first-row">
+      <mat-form-field appearance="outline" class="input-field small-field">
+        <mat-label>Funktion</mat-label>
+        <input matInput formControlName="position">
+      </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Eintritt</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field> 
-        
-        <mat-form-field appearance="outline">
-          <mat-label>Anstellung in %</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline">
-          <mat-label> Agentur Dropdown</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="outline" class="input-field small-field">
+        <mat-label>Eintritt</mat-label>
+        <input matInput formControlName="entryDate">
+      </mat-form-field> 
 
-      <div class="second-row">
-        <mat-form-field appearance="outline">
-            <mat-label>Adresse</mat-label>
-            <input matInput placeholder="Placeholder">
-          </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field small-field">
+        <mat-label>Anstellung in %</mat-label>
+        <input matInput formControlName="employmentPercentage">
+      </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>PLZ</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field small-field">
+        <mat-label>Agentur Dropdown</mat-label>
+        <mat-select formControlName="selectedAgency" (selectionChange)="onAgencyChange($event.value)">
+          <mat-option *ngFor="let agency of agencies" [value]="agency.name"> 
+            {{ agency.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Ort</mat-label>
-            <input matInput placeholder="Placeholder">
-          </mat-form-field>        
-      </div>
-      </form>
+    <div class="second-row">
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Adresse</mat-label>
+        <input matInput placeholder="Adresse" [value]="selectedAgency?.address" readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="input-field small-field">
+        <mat-label>PLZ</mat-label>
+        <input matInput [value]="selectedAgency?.zip" readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Ort</mat-label>
+        <input matInput [value]="selectedAgency?.city" readonly>
+      </mat-form-field>        
+    </div>
+  </form>
 </div>

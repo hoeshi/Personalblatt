@@ -1,5 +1,5 @@
-export class sideJob {
-    constructor() {
-    
-    }
-}
+export class SideJob {
+    jobType: string = '';
+  
+    constructor() { }
+  }

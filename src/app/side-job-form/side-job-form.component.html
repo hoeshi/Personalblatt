@@ -1,18 +1,14 @@
-<div class="sideJob-form">
-    
+<div class="sideJob-form" [formGroup]="sideJobForm">
   <p>Haben Sie eine Nebenbeschäftigung?</p>
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Ja</mat-radio-button>
-            <mat-radio-button value="2">Nein</mat-radio-button>
-          </mat-radio-group>
-          
-  <form>
-      <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
-        <mat-form-field appearance="outline">
-          <mat-label>Welche?</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
+  <mat-radio-group formControlName="selected" name="sideJobRadio" aria-label="Select an option">
+    <mat-radio-button value="yes">Ja</mat-radio-button>
+    <mat-radio-button value="no">Nein</mat-radio-button>
+  </mat-radio-group>
 
-      </div>
-    </form>
+  <div *ngIf="sideJobForm.get('selected')?.value === 'yes'" class="first-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Welche?</mat-label>
+      <input matInput formControlName="jobType">
+    </mat-form-field>
+  </div>
 </div>

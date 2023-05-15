@@ -1,15 +1,14 @@
-<div>
-    
-    <form action="">
+<div class="abilityToWorkForm">
+  <form [formGroup]="abilityToWorkForm">
     <p>Ist die versicherte Person voll arbeitsfähig?</p>
-      <mat-radio-group [(ngModel)]="selected" aria-label="Select an option" name="selectedRadio">
-        <mat-radio-button value="yes">Ja</mat-radio-button>
-        <mat-radio-button value="no">Nein</mat-radio-button>
-      </mat-radio-group>
+    <mat-radio-group formControlName="selected" aria-label="Select an option" name="selectedRadio">
+      <mat-radio-button value="yes">Ja</mat-radio-button>
+      <mat-radio-button value="no">Nein</mat-radio-button>
+    </mat-radio-group>
 
-      <div *ngIf="selected === 'yes'">
-        <p>Upload Arbeitsunfähigkeitsbescheinigung</p>
-      </div>
-        
-    </form>
-</div>      
+    <div *ngIf="abilityToWorkForm.get('selected')?.value === 'no'">
+      <p>Bitte Datei hochladen</p>
+      <input type="file" name="AUBescheinigung">
+    </div>
+  </form>
+</div>

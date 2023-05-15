@@ -1,105 +1,106 @@
 <div class="personal-information">
-    <form>
-      <div>
-        <h2>Angaben Ehepartner</h2>
-      </div>
-      
-      <div class="first-row">
-        <mat-form-field appearance="outline">
-          <mat-label>Vorname</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
+  <form [formGroup]="spouseForm">
+    <div>
+      <h2>Angaben Ehepartner</h2>
+    </div>
+    
+    <div class="first-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Vorname</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="second-row">
-        <mat-form-field appearance="fill">
-            <mat-label>Nationalität</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="civilstatus">
-              <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                {{civilstatus.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Heimatort</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
-
-        
-        <mat-form-field appearance="fill">
-            <mat-label>Konfession</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="civilstatus">
-              <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                {{civilstatus.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-      </div>
-
-      <div class="third-row">
-        <mat-form-field appearance="outline">
-          <mat-label>AHV</mat-label>
-          <input matInput placeholder="Placeholder">
-        </mat-form-field>
-     
-
-      <mat-form-field appearance="outline">
-        <mat-label>Bewilligung Dropdown</mat-label>
-        <input matInput placeholder="Placeholder">
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthdate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
 
-      <p>Hat Ihr Ehepartner eine Beschäftigung?</p>
-      <mat-radio-group [(ngModel)]="selected" name="radioSelected" aria-label="Select an option">
-        <mat-radio-button value="yes">Ja</mat-radio-button>
-        <mat-radio-button value="no">Nein</mat-radio-button>
-      </mat-radio-group>
+    <div class="second-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Nationalität</mat-label>
+        <mat-select formControlName="country">
+          <mat-option *ngFor="let country of countries" [value]="country.name">
+            {{country.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <div *ngIf="selected === 'yes'">
-      <form action="">
-        <div class="fourth-row">
-          <mat-form-field appearance="outline">
-            <mat-label>Haupt- oder Nebenbeschäftigung?</mat-label>
-            <input matInput placeholder="Placeholder">
-          </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Heimatort</mat-label>
+        <input matInput formControlName="homeTown">
+      </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Beginn der Tätigkeit</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>    
-          
-          <mat-form-field appearance="outline">
-            <mat-label>Arbeitsort</mat-label>
-            <input matInput placeholder="Placeholder">
-          </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Konfession</mat-label>
+        <mat-select formControlName="religion">
+          <mat-option *ngFor="let religion of religions" [value]="religion.value">
+            {{religion.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-          <p>Art des Einkommens</p>
-                <mat-radio-group aria-label="Select an option">
-                  <mat-radio-button value="1">Lohn oder Ersatzeinkommen (Taggeld einer Versicherung)</mat-radio-button>
-                  <mat-radio-button value="2">Lohn oder Ersatzeinkommen und zusätzlich eine Rente</mat-radio-button>
-                  <mat-radio-button value="3">Rente</mat-radio-button>
-                </mat-radio-group>
-        </form>
-      </div>
-      <p>Upload ID</p>
-      <p>Upload AHV</p>
-    </form>
+    <div class="third-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>AHV</mat-label>
+        <input matInput formControlName="ahv">
+      </mat-form-field>
+   
+
+      <mat-form-field appearance="outline" *ngIf="spouseForm.get('country')?.value && spouseForm.get('country')?.value !== 'Schweiz'" class="input-field wider-field">
+        <mat-label>Bewilligung</mat-label>
+        <mat-select formControlName="permit">
+          <mat-option *ngFor="let permit of permits" [value]="permit.value">
+            {{permit.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <p>Hat Ihr Ehepartner eine Beschäftigung?</p>
+    <mat-radio-group formControlName="employed" aria-label="Select an option">
+      <mat-radio-button value="yes">Ja</mat-radio-button>
+      <mat-radio-button value="no">Nein</mat-radio-button>
+    </mat-radio-group>
+
+    <div *ngIf="spouseForm.get('employed')?.value === 'yes'">
+      <div class="fourth-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Haupt- oder Nebenbeschäftigung?</mat-label>
+          <input matInput formControlName="employmentType">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Beginn der Tätigkeit</mat-label>
+          <input matInput [matDatepicker]="employmentStartDatePicker" form>
+          <mat-datepicker-toggle matSuffix [for]="employmentStartDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #employmentStartDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>    
+      
+    <mat-form-field appearance="outline">
+      <mat-label>Arbeitsort</mat-label>
+      <input matInput formControlName="employmentLocation">
+    </mat-form-field>
+
+    <p>Art des Einkommens</p>
+    <mat-radio-group formControlName="incomeType" aria-label="Select an option">
+      <mat-radio-button value="1">Lohn oder Ersatzeinkommen (Taggeld einer Versicherung)</mat-radio-button>
+      <mat-radio-button value="2">Lohn oder Ersatzeinkommen und zusätzlich eine Rente</mat-radio-button>
+      <mat-radio-button value="3">Rente</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <p>Upload ID</p>
+  <p>Upload AHV</p>
+  </form>
 </div>

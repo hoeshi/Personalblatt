@@ -1,152 +1,148 @@
 <div class="personal-information">
-    
-        <form>
-          <div>
-            <h2>Persönliche Angaben</h2>
-          </div>
-          
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Mann</mat-radio-button>
-            <mat-radio-button value="2">Frau</mat-radio-button>
-          </mat-radio-group>
+  <form [formGroup]="personalInformationForm">
+    <h2>Persönliche Angaben</h2>
 
-          <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
-            <mat-form-field appearance="outline">
-              <mat-label>Vorname</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+    <mat-radio-group formControlName="gender" aria-label="Select an option">
+      <mat-radio-button value="male">Mann</mat-radio-button>
+      <mat-radio-button value="female">Frau</mat-radio-button>
+    </mat-radio-group>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+    <div class="first-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Vorname</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Choose a date</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
 
-          <div class="second-row">
-            <mat-form-field appearance="outline">
-              <mat-label>Adresse</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Geburtsdatum</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
 
-            <mat-form-field appearance="outline">
-              <mat-label>PLZ</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+    <div class="second-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Adresse</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Ort</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field">
+        <mat-label>PLZ</mat-label>
+        <input matInput formControlName="postalCode">
+      </mat-form-field>
 
-           
-          </div>
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Ort</mat-label>
+        <input matInput formControlName="location">
+      </mat-form-field>
+    </div>
 
-          <div class="third-row">
-            <mat-form-field appearance="outline">
-              <mat-label>Vorname</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+    <div class="third-row">
+      <mat-form-field appearance="outline" class="input-field middle-field"> 
+        <mat-label>Zivilstand</mat-label>
+        <mat-select formControlName="civilStatus">
+          <mat-option *ngFor="let civilstatus of civilstatus" [value]="civilstatus.value">
+            {{civilstatus.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Nationalität</mat-label>
+        <mat-select formControlName="nationality">
+          <mat-option *ngFor="let country of countries" [value]="country.name">
+            {{country.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            
-          </div>
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Konfession</mat-label>
+        <mat-select formControlName="religion">
+          <mat-option *ngFor="let religion of religions" [value]="religion.value">
+            {{religion.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <div class="fourth-row">
-            <mat-form-field appearance="fill">
-              <mat-label>Zivilstand</mat-label>
-              <mat-select [(ngModel)]="selectedStatus" name="civilstatus">
-                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                  {{civilstatus.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field middle-field">
+        <mat-label>Heimatort</mat-label>
+        <input matInput formControlName="homeTown">
+      </mat-form-field>
+    </div>
 
-            
+    <div class="fourth-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Tel.</mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Nationalität</mat-label>
-              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
-                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                  {{civilstatus.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>E-Mail</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+    </div>
+    <div class="fifth-row">
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Finma-Nummer</mat-label>
+        <input matInput formControlName="finmaNumber">
+      </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Konfession</mat-label>
-              <mat-select [(ngModel)]="selectedValue" name="civilstatus">
-                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                  {{civilstatus.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Heimatort</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
-
-           
-          </div>
-
-          <div class="fifth-row">
-            
-            <mat-form-field appearance="outline">
-              <mat-label>Tel.</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>E-Mail</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
-
-           
-          </div>
-
-          <div class="sixth-row">
-            <mat-form-field appearance="outline">
-              <mat-label>Finma-Nummer</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Cicero-Nummer</mat-label>
-              <input matInput placeholder="Placeholder">
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Bewilligung</mat-label>
-              <mat-select [(ngModel)]="selectedStatus" name="civilstatus">
-                <mat-option *ngFor="let civilstatus of civilstatuses" [value]="civilstatus.value">
-                  {{civilstatus.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-          </div>
-          
-          <div *ngIf="selectedStatus === 'verheiratet-1'">
-            <app-spouse-form></app-spouse-form>
-          </div>
-          
-
-          <p>File Upload Betreibungsregisterauszug</p>
-          <p>File Upload Ansässigkeitsbescheinigung</p>
-          <p>File Upload ID/Ausweis</p>
-          
-        </form>
+      <mat-form-field appearance="outline" class="input-field wider-field">
+        <mat-label>Cicero-Nummer</mat-label>
+        <input matInput formControlName="ciceroNumber">
+      </mat-form-field>
       
-  </div>
+      <mat-form-field appearance="outline" *ngIf="personalInformationForm.get('nationality')?.value !== 'Schweiz' && personalInformationForm.get('nationality')?.value !== ''" class="input-field wider-field">
+        <mat-label>Bewilligung</mat-label>
+        <mat-select formControlName="permit">
+          <mat-option *ngFor="let permit of permits" [value]="permit.value">
+            {{permit.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <p>Sind Sie innerhalb letzten Jahres umgezogen?</p>
+    
+      <mat-radio-group formControlName="movedLastYear" aria-label="Select an option">
+        <mat-radio-button value="yes">Ja</mat-radio-button>
+        <mat-radio-button value="no">Nein</mat-radio-button>
+      </mat-radio-group>
+      
+      <div class="movedRow"></div>
+        
+        <div *ngIf="personalInformationForm.get('movedLastYear')?.value === 'yes'">
+          <mat-form-field appearance="outline" class="input-field wider-field">
+            <mat-label>Zuzug von</mat-label>
+            <input matInput formControlName="previousAddress">
+          </mat-form-field>
+      
+          <mat-form-field appearance="outline" class="input-field wider-field">
+            <mat-label>Zuzugsdatum</mat-label>
+            <input matInput [matDatepicker]="movedPicker" formControlName="moveDate">
+            <mat-datepicker-toggle matSuffix [for]="movedPicker"></mat-datepicker-toggle>
+            <mat-datepicker #movedPicker></mat-datepicker>
+          </mat-form-field>
+      
+          <p>Auszug Upload</p>
+        </div>
+    
+    
+    <p>File Upload Betreibungsregisterauszug</p>
+    <p>File Upload Ansässigkeitsbescheinigung</p>
+    <p>File Upload ID/Ausweis</p>
+    <!-- Add Upload Controls -->
+    
+    <div *ngIf="personalInformationForm.get('civilStatus')?.value === 'verheiratet'">
+      <app-spouse-form></app-spouse-form>
+    </div>
+
+  </form>
+</div> 

@@ -1,5 +1,5 @@
-export class benefits {
-    constructor() {
-    
-    }
-}
+export class Benefits {
+    selected: string = '';
+  
+    constructor() {}
+  }

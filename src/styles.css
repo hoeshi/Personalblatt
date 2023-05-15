@@ -1,4 +1,49 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0;}
+
+  @font-face {
+    font-family: "NeoFontRegular";
+    src: url("/assets/fonts/univiapro-regular-webfont.woff2") format("woff2"),
+      url("/assets/fonts/univiapro-regular-webfont.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "NeoFontNormal";
+    src: url("/assets/fonts/univiapro-light-webfont.woff2") format("woff2"),
+      url("/assets/fonts/univiapro-light-webfont.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "NeoFontMedium";
+    src: 
+      url("/assets/fonts/UniviaPro-Medium.otf") format("woff");
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "NeoFontBold";
+    src: url("/assets/fonts/univiapro-bold-webfont.woff2") format("woff2"),
+      url("/assets/fonts/univiapro-bold-webfont.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+mat-form-field {
+    margin-right: 40px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-benefits-form',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./benefits-form.component.css']
 })
 export class BenefitsFormComponent implements OnInit {
-  selected: string = '';
-  
-  constructor() { }
+  benefitsForm: FormGroup;
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
+    this.benefitsForm = this.fb.group({
+      selected: ['']
+    });
   }
 
+  ngOnInit(): void {}
 }
