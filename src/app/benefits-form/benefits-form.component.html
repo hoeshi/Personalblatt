@@ -1,18 +1,13 @@
+<div class="benefitsForm">
+  <form [formGroup]="benefitsForm">
+    <p>Bezieht die zu versichernde Person Leistungen der Invaliden-, Militär oder Unfallversicherung, einer Pensionskasse oder sind Anträge dazu gestellt?</p>
+    <mat-radio-group formControlName="selected" aria-label="Select an option" name="radiobutton">
+      <mat-radio-button value="yes">Ja</mat-radio-button>
+      <mat-radio-button value="no">Nein</mat-radio-button>
+    </mat-radio-group>
 
-<div>
-    <form>
-        <p>Bezieht die zu versichernde Person Leistungen der Invaliden-, Militär oder Unfallversicherung, einer Pensionskasse oder sind Anträge dazu gestellt?</p>
-      <mat-radio-group [(ngModel)]="selected" aria-label="Select an option" name="radiobutton">
-        <mat-radio-button value="yes">Ja</mat-radio-button>
-        <mat-radio-button value="no">Nein</mat-radio-button>
-      </mat-radio-group>
-
-      <div *ngIf="selected === 'yes'">
-        <p>Upload Entsprechendes Dokument</p>
-      </div>
-    </form>
-
-    
-    
-
+    <div *ngIf="benefitsForm.get('selected')?.value === 'yes'">
+      <p>Upload Entsprechendes Dokument</p>
+    </div>
+  </form>
 </div>
