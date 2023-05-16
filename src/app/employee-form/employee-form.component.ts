@@ -20,8 +20,4 @@ export class EmployeeFormComponent implements OnInit {
     
   }
 
-  downloadPDF(): void {
-    this.appComponent.downloadAsPDF();
-  }
-
 }
