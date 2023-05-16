@@ -1,3 +1,4 @@
+import { FileService } from './../Controller/Services/fileservice';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Child } from '../Models/child.model';
@@ -13,7 +14,7 @@ export class ChildFormComponent {
   selectedChild = 'no';
   childForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private fileService: FileService) {
     this.childForm = this.fb.group({
       children: this.fb.array([])
     });
@@ -45,4 +46,12 @@ export class ChildFormComponent {
       this.children.push(Child.toFormGroup(new Child('', '', new Date(), '', 0)));
     }
   } 
+  uploadFiles(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const files = input.files;
+    if (files) {
+      const fileList = Array.from(files);
+      this.fileService.addFiles(fileList);
+    }
+  }
 }

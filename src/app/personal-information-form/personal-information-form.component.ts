@@ -6,6 +6,9 @@ import { religions } from '../lists/religion';
 import { civilstatuses } from '../lists/civilstatus';
 import { PersonalInformation } from '../Models/personalInformation.model';
 import { ValidationService } from '../Controller/Services/validation.service';
+import { FileService } from '../Controller/Services/fileservice';
+import JSZip from 'jszip';
+import saveAs from 'file-saver';
 
 @Component({
   selector: 'app-personal-information-form',
@@ -26,7 +29,7 @@ export class PersonalInformationFormComponent implements OnInit {
   personalInformationForm!: FormGroup;
   personalInformation: PersonalInformation = new PersonalInformation();
 
-  constructor(private fb: FormBuilder, public validationService: ValidationService) {}
+  constructor(private fb: FormBuilder, public validationService: ValidationService, private fileService: FileService) {}
 
 
   ngOnInit(): void {
@@ -56,4 +59,13 @@ export class PersonalInformationFormComponent implements OnInit {
       this.selectedCountry = val;
     });
   }
+
+uploadFiles(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const files = input.files;
+  if (files) {
+    const fileList = Array.from(files);
+    this.fileService.addFiles(fileList);
+  }
+}
 }

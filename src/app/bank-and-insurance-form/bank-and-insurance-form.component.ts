@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FileService } from '../Controller/Services/fileservice';
 
 @Component({
   selector: 'app-bank-and-insurance-form',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class BankAndInsuranceFormComponent implements OnInit {
   bankAndInsuranceForm: FormGroup;
 
-  constructor() {
+  constructor(private fileService: FileService) {
     this.bankAndInsuranceForm = new FormGroup({
       ahv: new FormControl('', Validators.required),
       iban: new FormControl('', Validators.required),
@@ -23,10 +24,14 @@ export class BankAndInsuranceFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-}
 
-export class BankAndInsurance {
-    constructor() {
-    
-    }
+
+uploadFiles(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const files = input.files;
+  if (files) {
+    const fileList = Array.from(files);
+    this.fileService.addFiles(fileList);
+  }
+}
 }

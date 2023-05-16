@@ -32,3 +32,17 @@ h2 {
 .small-field {
   flex-basis: 10%
 }
+
+.upload-label {
+  background-color: rgb(0, 37, 77);
+  color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.upload-input {
+  display: none;
+}

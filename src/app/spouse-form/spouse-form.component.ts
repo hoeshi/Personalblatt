@@ -5,6 +5,7 @@ import { COUNTRIES } from '../lists/countries';
 import { religions } from '../lists/religion';
 import { Spouse } from '../Models/spouse.model';
 import { ValidationService } from '../Controller/Services/validation.service';
+import { FileService } from '../Controller/Services/fileservice';
 
 @Component({
   selector: 'app-spouse-form',
@@ -24,7 +25,7 @@ export class SpouseFormComponent implements OnInit {
   spouseForm!: FormGroup;
   spouse: Spouse = new Spouse();
 
-  constructor(public validationService: ValidationService) { }
+  constructor(public validationService: ValidationService, private fileService: FileService) { }
 
   ngOnInit(): void {
     this.spouseForm = new FormGroup({
@@ -46,5 +47,14 @@ export class SpouseFormComponent implements OnInit {
     this.countryControl.valueChanges.subscribe(val => {
       this.selectedCountry = val;
     });
+  }
+
+  uploadFiles(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const files = input.files;
+    if (files) {
+      const fileList = Array.from(files);
+      this.fileService.addFiles(fileList);
+    }
   }
 }

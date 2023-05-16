@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-import { PdfConversionService } from '../Controller/Services/pdfConversion.service';
 import { AppComponent } from '../app.component';
 
 @Component({

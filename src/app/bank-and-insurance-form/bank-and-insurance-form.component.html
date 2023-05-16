@@ -45,5 +45,13 @@
   </form>
   
   <p>Upload AHV</p>
-  <p>Upload Bankkarte</p>
+          <label for="file-upload-id" class="upload-label">
+            Datei auswählen
+          </label>
+          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
+          <p>Upload Bankkarte</p>
+          <label for="file-upload-id" class="upload-label">
+            Datei auswählen
+          </label>
+          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
 </div>
