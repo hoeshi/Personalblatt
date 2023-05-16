@@ -49,11 +49,11 @@
 
           
         </div>
-        <p>Upload Geburtsschein</p>
-        <label for="file-upload" class="upload-label">
-          <input type="file" id="file-upload" name="Geburtsschein" class="upload-input">
-          Datei auswählen
-        </label>
+        <p>Geburtsschein</p>
+          <label for="file-upload-id" class="upload-label">
+            Datei auswählen
+          </label>
+          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
 
       </div>
     </div>
