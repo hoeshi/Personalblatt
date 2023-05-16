@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 export class Child {
     firstName: string;
@@ -18,11 +18,11 @@ export class Child {
     // Konvertiert eine Child-Instanz in eine FormGroup
     static toFormGroup(child: Child): FormGroup {
       return new FormGroup({
-        firstName: new FormControl(child.firstName),
-        lastName: new FormControl(child.lastName),
-        birthDate: new FormControl(child.birthDate),
-        school: new FormControl(child.school),
-        duration: new FormControl(child.duration)
+        firstName: new FormControl(child.firstName, Validators.required),
+        lastName: new FormControl(child.lastName, Validators.required),
+        birthDate: new FormControl(child.birthDate, Validators.required),
+        school: new FormControl(child.school, Validators.required),
+        duration: new FormControl(child.duration, Validators.required)
       });
     }
   }

@@ -7,7 +7,10 @@
     </mat-radio-group>
 
     <div *ngIf="benefitsForm.get('selected')?.value === 'yes'">
-      <p>Upload Entsprechendes Dokument</p>
+      <label for="file-upload" class="upload-label">
+        <input type="file" id="file-upload" name="Benefits" class="upload-input">
+        Datei auswählen
+      </label>
     </div>
   </form>
 </div>

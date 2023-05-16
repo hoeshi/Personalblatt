@@ -11,7 +11,7 @@
     <button (click)="decrement()">-</button>
   </div>
 
-  <form [formGroup]="childForm" *ngIf="selectedChild === 'yes'">
+  <form [formGroup]="childForm" *ngIf="selectedChild === 'yes'" #pdfContent>
     <div formArrayName="children" *ngFor="let child of children.controls; index as i">
       <div [formGroupName]="i">
         <h2>Angaben Kind {{i + 1}}</h2>
@@ -46,8 +46,15 @@
             <input matInput formControlName="duration">
           </mat-form-field>
 
-          <p class="input-field middle-field">FileUpload Geburtsschein</p>
+
+          
         </div>
+        <p>Upload Geburtsschein</p>
+        <label for="file-upload" class="upload-label">
+          <input type="file" id="file-upload" name="Geburtsschein" class="upload-input">
+          Datei auswählen
+        </label>
+
       </div>
     </div>
   </form>

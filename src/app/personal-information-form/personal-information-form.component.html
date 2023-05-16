@@ -131,14 +131,34 @@
             <mat-datepicker #movedPicker></mat-datepicker>
           </mat-form-field>
       
-          <p>Auszug Upload</p>
+          
+          <p>Upload Betreibungsregisterauszug vorangegangener Wohnsitz</p>
+          <label for="file-upload" class="upload-label">
+            <input type="file" id="file-upload" name="vorangegangenerWohnsitz" class="upload-input">
+          Datei auswählen
+          </label>
         </div>
     
+        <p>Upload Betreibungsregisterauszug</p>
+        <label for="file-upload" class="upload-label">
+          <input type="file" id="file-upload" name="Betreibungsregisterauszug" class="upload-input">
+          Datei auswählen
+        </label>
+        
+        <p>Upload ID/Ausweis</p>
+        <label for="file-upload" class="upload-label">
+          <input type="file" id="file-upload" name="ID" class="upload-input">
+          Datei auswählen
+        </label>
+        
+
+        <p>Upload Ansässigkeitsbescheinigung</p>
+<label for="file-upload" class="upload-label" *ngIf="personalInformationForm.get('permit')?.value === 'G'">
+  <input type="file" id="file-upload" name="Ansässigkeitsbescheinigung" class="upload-input">
+  Datei auswählen
+</label>
     
-    <p>File Upload Betreibungsregisterauszug</p>
-    <p>File Upload Ansässigkeitsbescheinigung</p>
-    <p>File Upload ID/Ausweis</p>
-    <!-- Add Upload Controls -->
+  
     
     <div *ngIf="personalInformationForm.get('civilStatus')?.value === 'verheiratet'">
       <app-spouse-form></app-spouse-form>

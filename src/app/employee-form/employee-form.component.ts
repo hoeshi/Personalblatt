@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+import { PdfConversionService } from '../Controller/Services/pdfConversion.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-employee-form',
@@ -6,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-form.component.css']
 })
 export class EmployeeFormComponent implements OnInit {
+  @Input() appComponent!: AppComponent;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    this.appComponent = this.appComponent;
+    
+  }
+
+  downloadPDF(): void {
+    this.appComponent.downloadAsPDF();
   }
 
 }

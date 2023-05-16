@@ -7,8 +7,10 @@
     </mat-radio-group>
 
     <div *ngIf="abilityToWorkForm.get('selected')?.value === 'no'">
-      <p>Bitte Datei hochladen</p>
-      <input type="file" name="AUBescheinigung">
+      <label for="file-upload" class="upload-label">
+        <input type="file" id="file-upload" name="AUBescheinigung" class="upload-input">
+        Datei auswählen
+      </label>
     </div>
   </form>
 </div>

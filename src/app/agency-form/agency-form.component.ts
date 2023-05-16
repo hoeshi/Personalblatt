@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AGENCY_LIST } from '../lists/agency_list';
 import { Agency } from '../Models/agency.model';
 
@@ -18,10 +18,10 @@ export class AgencyFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.agencyForm = this.fb.group({
-      position: [''],
-      entryDate: [''],
-      employmentPercentage: [''],
-      selectedAgency: ['']
+      position: ['', Validators.required],
+      entryDate: ['', Validators.required],
+      employmentPercentage: ['', Validators.required],
+      selectedAgency: ['', Validators.required]
     });
 
     this.agencyControl.valueChanges.subscribe(val => {
