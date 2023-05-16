@@ -5,6 +5,7 @@ import { permits } from '../lists/permit';
 import { religions } from '../lists/religion';
 import { civilstatuses } from '../lists/civilstatus';
 import { PersonalInformation } from '../Models/personalInformation.model';
+import { ValidationService } from '../Controller/Services/validation.service';
 
 @Component({
   selector: 'app-personal-information-form',
@@ -25,36 +26,34 @@ export class PersonalInformationFormComponent implements OnInit {
   personalInformationForm!: FormGroup;
   personalInformation: PersonalInformation = new PersonalInformation();
 
-  constructor(private fb: FormBuilder) {
-    
-   }
+  constructor(private fb: FormBuilder, public validationService: ValidationService) {}
 
-   ngOnInit(): void {
+
+  ngOnInit(): void {
     this.personalInformationForm = this.fb.group({
       gender: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Vorname')]],
+      lastName: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Name')]],
       civilStatus: ['', Validators.required],
       nationality: ['', Validators.required],
       birthDate: ['', Validators.required],
-      address: ['', Validators.required],
-      postalCode: ['', Validators.required],
-      location: ['', Validators.required],
-      homeTown: ['', Validators.required],
-      phone: ['', Validators.required],
+      address: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Adresse')]],
+      postalCode: ['', [Validators.required, this.validationService.validatePostalCode.bind(this.validationService, 'PLZ')]],
+      location: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Ort')]],
+      homeTown: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Heimatort')]],
+      phone: ['', [Validators.required, this.validationService.validatePhoneNumber.bind(this.validationService, 'Tel.')]],
       finmaNumber: [''],
       ciceroNumber: [''],
       movedLastYear: ['', Validators.required],
       religion: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, this.validationService.validateEmail.bind(this.validationService, 'E-Mail')]],
       permit: ['', Validators.required],
-      previousAddress: ['', Validators.required],
+      previousAddress: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Zuzug von')]],
       moveDate: ['', Validators.required],
     });
 
-    this.personalInformationForm.get('nationality')!.valueChanges.subscribe(val => {
+    this.personalInformationForm.get('nationality')!.valueChanges.subscribe((val) => {
       this.selectedCountry = val;
     });
   }
 }
-

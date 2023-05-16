@@ -11,18 +11,27 @@
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Vorname</mat-label>
         <input matInput formControlName="firstName">
+        <mat-error *ngIf="personalInformationForm.get('firstName')?.invalid && personalInformationForm.get('firstName')?.touched">
+          {{ validationService.getRequiredErrorMessage('Vorname') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Name</mat-label>
         <input matInput formControlName="lastName">
+        <mat-error *ngIf="personalInformationForm.get('lastName')?.invalid && personalInformationForm.get('lastName')?.touched">
+          {{ validationService.getRequiredErrorMessage('Name') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Geburtsdatum</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="birthDate" >
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="personalInformationForm.get('birthDate')?.invalid && personalInformationForm.get('birthDate')?.touched">
+          {{ validationService.getRequiredErrorMessage('Geburtsdatum') }}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -30,27 +39,39 @@
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Adresse</mat-label>
         <input matInput formControlName="address">
+        <mat-error *ngIf="personalInformationForm.get('address')?.invalid && personalInformationForm.get('address')?.touched">
+          {{ validationService.getRequiredErrorMessage('Adresse') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>PLZ</mat-label>
         <input matInput formControlName="postalCode">
+        <mat-error *ngIf="personalInformationForm.get('postalCode')?.invalid && personalInformationForm.get('postalCode')?.touched">
+          {{ validationService.getInvalidZipErrorMessage('PLZ') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Ort</mat-label>
         <input matInput formControlName="location">
+        <mat-error *ngIf="personalInformationForm.get('location')?.invalid && personalInformationForm.get('location')?.touched">
+          {{ validationService.getRequiredErrorMessage('Ort') }}
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="third-row">
-      <mat-form-field appearance="outline" class="input-field middle-field"> 
+      <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Zivilstand</mat-label>
         <mat-select formControlName="civilStatus">
           <mat-option *ngFor="let civilstatus of civilstatus" [value]="civilstatus.value">
             {{civilstatus.value}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="personalInformationForm.get('civilStatus')?.invalid && personalInformationForm.get('civilStatus')?.touched">
+          {{ validationService.getRequiredErrorMessage('Zivilstand') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
@@ -60,6 +81,9 @@
             {{country.name}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="personalInformationForm.get('nationality')?.invalid && personalInformationForm.get('nationality')?.touched">
+          {{ validationService.getRequiredErrorMessage('Nationalität') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
@@ -69,11 +93,17 @@
             {{religion.value}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="personalInformationForm.get('religion')?.invalid && personalInformationForm.get('religion')?.touched">
+          {{ validationService.getRequiredErrorMessage('Konfession') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Heimatort</mat-label>
         <input matInput formControlName="homeTown">
+        <mat-error *ngIf="personalInformationForm.get('homeTown')?.invalid && personalInformationForm.get('homeTown')?.touched">
+          {{ validationService.getRequiredErrorMessage('Heimatort') }}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -81,11 +111,17 @@
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Tel.</mat-label>
         <input matInput formControlName="phone">
+        <mat-error *ngIf="personalInformationForm.get('phone')?.invalid && personalInformationForm.get('phone')?.touched">
+          {{ validationService.getInvalidPhoneNumberErrorMessage('Tel.') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>E-Mail</mat-label>
         <input matInput formControlName="email">
+        <mat-error *ngIf="personalInformationForm.get('email')?.invalid && personalInformationForm.get('email')?.touched">
+          {{ validationService.getInvalidEmailErrorMessage('E-Mail') }}
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="fifth-row">
@@ -133,36 +169,37 @@
       
           
           <p>Upload Betreibungsregisterauszug vorangegangener Wohnsitz</p>
-          <label for="file-upload" class="upload-label">
-            <input type="file" id="file-upload" name="vorangegangenerWohnsitz" class="upload-input">
-          Datei auswählen
+          <label for="file-upload-vorwohnsitz" class="upload-label">
+            <input type="file" id="file-upload-vorwohnsitz" name="vorangegangenerWohnsitz" class="upload-input">
+            Datei auswählen
           </label>
         </div>
     
         <p>Upload Betreibungsregisterauszug</p>
-        <label for="file-upload" class="upload-label">
-          <input type="file" id="file-upload" name="Betreibungsregisterauszug" class="upload-input">
+        <label for="file-upload-betreibungsregister" class="upload-label">
+          <input type="file" id="file-upload-betreibungsregister" name="Betreibungsregisterauszug" class="upload-input">
           Datei auswählen
         </label>
         
         <p>Upload ID/Ausweis</p>
-        <label for="file-upload" class="upload-label">
-          <input type="file" id="file-upload" name="ID" class="upload-input">
+        <label for="file-upload-id" class="upload-label">
+          <input type="file" id="file-upload-id" name="ID" class="upload-input">
           Datei auswählen
         </label>
         
 
         <p>Upload Ansässigkeitsbescheinigung</p>
-<label for="file-upload" class="upload-label" *ngIf="personalInformationForm.get('permit')?.value === 'G'">
-  <input type="file" id="file-upload" name="Ansässigkeitsbescheinigung" class="upload-input">
-  Datei auswählen
-</label>
+        <label for="file-upload-ansässigkeitsbescheinigung" class="upload-label" *ngIf="personalInformationForm.get('permit')?.value === 'G'">
+          <input type="file" id="file-upload-ansässigkeitsbescheinigung" name="Ansässigkeitsbescheinigung" class="upload-input">
+          Datei auswählen
+        </label>
     
   
     
-    <div *ngIf="personalInformationForm.get('civilStatus')?.value === 'verheiratet'">
+    <div *ngIf="personalInformationForm.get('civilStatus')?.value ==='verheiratet'">
       <app-spouse-form></app-spouse-form>
-    </div>
+      </div>
+      <button mat-button type="submit">Absenden</button>
 
-  </form>
-</div> 
+    </form>
+  </div>

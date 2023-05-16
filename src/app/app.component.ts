@@ -4,7 +4,6 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 // @ts-ignore
 import html2pdf from 'html2pdf.js';
-import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -17,11 +16,10 @@ export class AppComponent {
   title = 'htmltopdf';
   
   @ViewChild('pdfTable') pdfTable!: ElementRef;
-  @ViewChild(EmployeeFormComponent) employeeFormComponent!: EmployeeFormComponent;
   
   
-  public downloadAsPDF() {
-    const formContainer = document.getElementById('pdfTable'); // Ersetzen Sie 'formContainer' durch die ID des Formularcontainers
+  public createPDF(): void {
+    const formContainer = this.pdfTable.nativeElement;
   
     if (formContainer) {
       const options = {
@@ -31,7 +29,21 @@ export class AppComponent {
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       };
   
-      html2pdf().set(options).from(formContainer).save();
+      html2pdf().set(options).from(formContainer).then((pdf: any) => {
+        this.sendPDFEmail(pdf);
+      });
     }
   }
+  public sendPDFEmail(pdf: any): void {
+    const subject = 'Personaldaten';
+    const body = '';
+    const recipient = 'it@neosana.ch';
+  
+    const emailBody = `${body}Bitte fügen Sie die folgenden heruntergeladenen Dateien als Anhänge zur E-Mail hinzu: Personalblatt.pdf`;
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+  
+    window.open(mailtoLink, '_blank');
+  }
 }
+
+

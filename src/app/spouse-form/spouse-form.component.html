@@ -8,19 +8,28 @@
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Vorname</mat-label>
         <input matInput formControlName="firstName">
+        <mat-error *ngIf="spouseForm.get('firstName')?.invalid && spouseForm.get('firstName')?.touched">
+          {{ validationService.getRequiredErrorMessage('Vorname') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Name</mat-label>
         <input matInput formControlName="lastName">
+        <mat-error *ngIf="spouseForm.get('lastName')?.invalid && spouseForm.get('lastName')?.touched">
+          {{ validationService.getRequiredErrorMessage('Name') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
-        <mat-label>Choose a date</mat-label>
+        <mat-label>Datum wählen</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="birthdate">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="spouseForm.get('birthdate')?.invalid && spouseForm.get('birthdate')?.touched">
+          {{ validationService.getRequiredErrorMessage('Geburtsdatum') }}
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -32,11 +41,17 @@
             {{country.name}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="spouseForm.get('country')?.invalid && spouseForm.get('country')?.touched">
+          {{ validationService.getRequiredErrorMessage('Nationalität') }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Heimatort</mat-label>
         <input matInput formControlName="homeTown">
+        <mat-error *ngIf="spouseForm.get('homeTown')?.invalid && spouseForm.get('homeTown')?.touched">
+          {{ validationService.getRequiredErrorMessage('Heimatort') }}
+        </mat-error>
       </mat-form-field>
 
       
@@ -47,15 +62,18 @@
             {{religion.value}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="spouseForm.get('religion')?.invalid && spouseForm.get('religion')?.touched">
+          {{ validationService.getRequiredErrorMessage('Konfession') }}
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="third-row">
-      <mat-form-field appearance="outline" class="input-field wider-field">
-        <mat-label>AHV</mat-label>
-        <input matInput formControlName="ahv">
-      </mat-form-field>
-   
+      
+    <mat-form-field appearance="outline" class="input-field wider-field">
+      <mat-label>AHV</mat-label>
+      <input matInput formControlName="ahv">
+    </mat-form-field>
 
       <mat-form-field appearance="outline" *ngIf="spouseForm.get('country')?.value && spouseForm.get('country')?.value !== 'Schweiz'" class="input-field wider-field">
         <mat-label>Bewilligung</mat-label>
@@ -65,42 +83,56 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-
+   </div>
+    
     <p>Hat Ihr Ehepartner eine Beschäftigung?</p>
     <mat-radio-group formControlName="employed" aria-label="Select an option">
       <mat-radio-button value="yes">Ja</mat-radio-button>
       <mat-radio-button value="no">Nein</mat-radio-button>
     </mat-radio-group>
-
+    
     <div *ngIf="spouseForm.get('employed')?.value === 'yes'">
       <div class="fourth-row">
         <mat-form-field appearance="outline">
           <mat-label>Haupt- oder Nebenbeschäftigung?</mat-label>
           <input matInput formControlName="employmentType">
+          <mat-error *ngIf="spouseForm.get('employmentType')?.invalid && spouseForm.get('employmentType')?.touched">
+            {{ validationService.getRequiredErrorMessage('Beschäftigungsart') }}
+          </mat-error>
         </mat-form-field>
-
+    
         <mat-form-field appearance="outline">
           <mat-label>Beginn der Tätigkeit</mat-label>
-          <input matInput [matDatepicker]="employmentStartDatePicker" form>
+          <input matInput [matDatepicker]="employmentStartDatePicker" formControlName="employmentStartDate">
           <mat-datepicker-toggle matSuffix [for]="employmentStartDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #employmentStartDatePicker></mat-datepicker>
-      </mat-form-field>
-    </div>    
+          <mat-datepicker #employmentStartDatePicker></mat-datepicker>
+          <mat-error *ngIf="spouseForm.get('employmentStartDate')?.invalid && spouseForm.get('employmentStartDate')?.touched">
+            {{ validationService.getRequiredErrorMessage('Beschäftigungsbeginn') }}
+          </mat-error>
+        </mat-form-field>
+      </div>    
       
-    <mat-form-field appearance="outline">
-      <mat-label>Arbeitsort</mat-label>
-      <input matInput formControlName="employmentLocation">
-    </mat-form-field>
-
-    <p>Art des Einkommens</p>
-    <mat-radio-group formControlName="incomeType" aria-label="Select an option">
-      <mat-radio-button value="1">Lohn oder Ersatzeinkommen (Taggeld einer Versicherung)</mat-radio-button>
-      <mat-radio-button value="2">Lohn oder Ersatzeinkommen und zusätzlich eine Rente</mat-radio-button>
-      <mat-radio-button value="3">Rente</mat-radio-button>
-    </mat-radio-group>
+      <mat-form-field appearance="outline">
+        <mat-label>Arbeitsort</mat-label>
+        <input matInput formControlName="employmentLocation">
+        <mat-error *ngIf="spouseForm.get('employmentLocation')?.invalid && spouseForm.get('employmentLocation')?.touched">
+          {{ validationService.getRequiredErrorMessage('Beschäftigungsort') }}
+        </mat-error>
+      </mat-form-field>
+    
+      <p>Art des Einkommens</p>
+      <mat-radio-group formControlName="incomeType" aria-label="Select an option">
+        <mat-radio-button value="1">Lohn oder Ersatzeinkommen (Taggeld einer Versicherung)</mat-radio-button>
+        <mat-radio-button value="2">Lohn oder Ersatzeinkommen und zusätzlich eine Rente</mat-radio-button>
+        <mat-radio-button value="3">Rente</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="spouseForm.get('incomeType')?.invalid && spouseForm.get('incomeType')?.touched">
+        {{ validationService.getRequiredErrorMessage('Einkommensart') }}
+      </mat-error>
+    </div>
+    
+    <p>Upload ID</p>
+    <p>Upload AHV</p>
+      </form>
   </div>
-  <p>Upload ID</p>
-  <p>Upload AHV</p>
-  </form>
-</div>
+  

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { permits } from '../lists/permit';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { COUNTRIES } from '../lists/countries';
 import { religions } from '../lists/religion';
 import { Spouse } from '../Models/spouse.model';
+import { ValidationService } from '../Controller/Services/validation.service';
 
 @Component({
   selector: 'app-spouse-form',
@@ -23,16 +24,16 @@ export class SpouseFormComponent implements OnInit {
   spouseForm!: FormGroup;
   spouse: Spouse = new Spouse();
 
-  constructor() { }
+  constructor(public validationService: ValidationService) { }
 
   ngOnInit(): void {
     this.spouseForm = new FormGroup({
-      firstName: new FormControl(this.spouse.firstName),
-      lastName: new FormControl(this.spouse.lastName),
-      birthdate: new FormControl(this.spouse.birthdate),
-      country: new FormControl(this.spouse.country),
-      homeTown: new FormControl(this.spouse.homeTown),
-      religion: new FormControl(this.spouse.religion),
+      firstName: new FormControl(this.spouse.firstName, [Validators.required, this.validationService.validateText.bind(this.validationService, 'Vorname')]),
+      lastName: new FormControl(this.spouse.lastName, [Validators.required, this.validationService.validateText.bind(this.validationService, 'Name')]),
+      birthdate: new FormControl(this.spouse.birthdate, Validators.required),
+      country: new FormControl(this.spouse.country, Validators.required),
+      homeTown: new FormControl(this.spouse.homeTown, [Validators.required, this.validationService.validateText.bind(this.validationService, 'Heimatort')]),
+      religion: new FormControl(this.spouse.religion, Validators.required),
       ahv: new FormControl(this.spouse.ahv),
       permit: new FormControl(this.spouse.permit),
       employed: new FormControl(this.spouse.employed),
@@ -45,6 +46,5 @@ export class SpouseFormComponent implements OnInit {
     this.countryControl.valueChanges.subscribe(val => {
       this.selectedCountry = val;
     });
-
   }
 }
