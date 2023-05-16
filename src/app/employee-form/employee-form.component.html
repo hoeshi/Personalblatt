@@ -1,4 +1,4 @@
-<mat-card #pdfContent>
+<mat-card>
   <mat-card-content>
     <app-personal-information-form></app-personal-information-form>
     <app-side-job-form></app-side-job-form>
@@ -25,7 +25,8 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <button mat-raised-button>PDF öffnen</button>
+        <button mat-raised-button class="custom-button" (click)="downloadPDF()">Export To PDF</button>
+        
       </div>
     </form>
   </div>
