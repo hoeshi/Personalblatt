@@ -40,6 +40,7 @@ export class SpouseFormComponent implements OnInit {
       employed: new FormControl(this.spouse.employed),
       employmentType: new FormControl(this.spouse.employmentType),
       employmentStartDate: new FormControl(this.spouse.employmentStartDate),
+      employmentEndDate: new FormControl(this.spouse.employmentEndDate),
       employmentLocation: new FormControl(this.spouse.employmentLocation),
       incomeType: new FormControl(this.spouse.incomeType)
     });

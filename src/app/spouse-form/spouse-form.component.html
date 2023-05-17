@@ -111,12 +111,25 @@
           </mat-error>
         </mat-form-field>
       </div>    
+
+     
+     
       
       <mat-form-field appearance="outline">
         <mat-label>Arbeitsort</mat-label>
         <input matInput formControlName="employmentLocation">
         <mat-error *ngIf="spouseForm.get('employmentLocation')?.invalid && spouseForm.get('employmentLocation')?.touched">
           {{ validationService.getRequiredErrorMessage('Beschäftigungsort') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ende der Tätigkeit</mat-label>
+        <input matInput [matDatepicker]="employmentEndDatePicker" formControlName="employmentEndDate">
+        <mat-datepicker-toggle matSuffix [for]="employmentEndDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #employmentEndDatePicker></mat-datepicker>
+        <mat-error *ngIf="spouseForm.get('employmentEndDate')?.invalid && spouseForm.get('employmentEndDate')?.touched">
+          {{ validationService.getRequiredErrorMessage('Beschäftigungsbeginn') }}
         </mat-error>
       </mat-form-field>
     

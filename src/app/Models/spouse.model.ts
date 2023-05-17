@@ -10,6 +10,7 @@ export class Spouse {
     employed!: string;
     employmentType!: string;
     employmentStartDate!: Date;
+    employmentEndDate!: Date;
     employmentLocation!: string;
     incomeType!: string;
 
