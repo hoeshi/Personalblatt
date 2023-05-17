@@ -29,7 +29,7 @@ export class AppComponent {
     if (formContainer) {
       const options = {
         filename: 'Personalblatt.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { type: 'png', quality: 1 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       };

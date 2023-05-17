@@ -51,3 +51,8 @@ h2 {
 .upload-input {
   display: none;
 }
+
+mat-label {
+  font-family: "Calibri";
+  font-size: 12;
+}

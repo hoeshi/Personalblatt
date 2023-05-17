@@ -32,3 +32,8 @@ h2 {
 .small-field {
   flex-basis: 10%
 }
+
+mat-label {
+  font-family: "Calibri";
+  font-size: 12;
+}

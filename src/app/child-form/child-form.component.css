@@ -44,3 +44,7 @@ button {
   display: none;
 }
 
+mat-label {
+  font-family: "Calibri";
+  font-size: 12;
+}

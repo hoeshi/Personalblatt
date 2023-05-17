@@ -41,7 +41,7 @@ export class PersonalInformationFormComponent implements OnInit {
       nationality: ['', Validators.required],
       birthDate: ['', Validators.required],
       address: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Adresse')]],
-      postalCode: ['', [Validators.required, this.validationService.validatePostalCode.bind(this.validationService, 'PLZ')]],
+      postalCode: new FormControl('', [Validators.required, this.validationService.validatePostalCode('PLZ')]),
       location: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Ort')]],
       homeTown: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Heimatort')]],
       phone: ['', [Validators.required, this.validationService.validatePhoneNumber.bind(this.validationService, 'Tel.')]],
@@ -49,11 +49,12 @@ export class PersonalInformationFormComponent implements OnInit {
       ciceroNumber: [''],
       movedLastYear: ['', Validators.required],
       religion: ['', Validators.required],
-      email: ['', [Validators.required, this.validationService.validateEmail.bind(this.validationService, 'E-Mail')]],
+      email: new FormControl('', [Validators.required, this.validationService.validateEmail('PLZ')]),
       permit: ['', Validators.required],
       previousAddress: ['', [Validators.required, this.validationService.validateText.bind(this.validationService, 'Zuzug von')]],
       moveDate: ['', Validators.required],
     });
+  
 
     this.personalInformationForm.get('nationality')!.valueChanges.subscribe((val) => {
       this.selectedCountry = val;

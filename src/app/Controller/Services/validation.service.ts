@@ -22,10 +22,10 @@ export class ValidationService {
   public validatePostalCode(fieldName: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
-      if (value && /^\d+$/.test(value)) {
+      if (!value || /^[0-9]+$/.test(value)) {
         return null;
       } else {
-        return { invalidPostalCode: `${fieldName} ist ungültig.` };
+        return { invalidPostalCode: `${fieldName} ist ungültig. Es sind nur Zahlen erlaubt.` };
       }
     };
   }
@@ -42,12 +42,12 @@ export class ValidationService {
   }
 
   public validateEmail(fieldName: string) {
-    return (control: AbstractControl): ValidationErrors | null => {
+    return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
-      if (value && Validators.email(control) == null) {
-        return null;
-      } else {
+      if (!value || !value.includes('@') || Validators.email(control) != null) {
         return { invalidEmail: `${fieldName} ist ungültig.` };
+      } else {
+        return null;
       }
     };
   }
@@ -55,7 +55,7 @@ export class ValidationService {
     return `Das Feld ${fieldName} ist erforderlich.`;
   }
 
-  public getInvalidZipErrorMessage(fieldName: string): string {
+  public getInvalidPostalCodeErrorMessage(fieldName: string): string {
     return `Ungültige Postleitzahl im Feld ${fieldName}.`;
   }
 

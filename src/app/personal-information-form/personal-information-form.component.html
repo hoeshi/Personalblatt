@@ -48,7 +48,7 @@
         <mat-label>PLZ</mat-label>
         <input matInput formControlName="postalCode">
         <mat-error *ngIf="personalInformationForm.get('postalCode')?.invalid && personalInformationForm.get('postalCode')?.touched">
-          {{ validationService.getInvalidZipErrorMessage('PLZ') }}
+          {{ validationService.getInvalidPostalCodeErrorMessage('PLZ') }}
         </mat-error>
       </mat-form-field>
 
@@ -119,7 +119,7 @@
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>E-Mail</mat-label>
         <input matInput formControlName="email">
-        <mat-error *ngIf="personalInformationForm.get('email')?.invalid && personalInformationForm.get('email')?.touched">
+        <mat-error *ngIf="personalInformationForm.get('email')?.hasError('invalidEmail') && personalInformationForm.get('email')?.touched">
           {{ validationService.getInvalidEmailErrorMessage('E-Mail') }}
         </mat-error>
       </mat-form-field>

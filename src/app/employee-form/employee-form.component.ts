@@ -1,7 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -17,6 +14,10 @@ export class EmployeeFormComponent implements OnInit {
   ngOnInit(): void {
     this.appComponent = this.appComponent;
     
+  }
+
+  send() {
+    this.appComponent.FileAsPDF();
   }
 
 }

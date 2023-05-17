@@ -4,7 +4,11 @@
     <div class="first-row">
       <mat-form-field appearance="outline" class="input-field small-field">
         <mat-label>Funktion</mat-label>
-        <input matInput formControlName="position">
+        <mat-select formControlName="selectedAgency" (selectionChange)="onFunctionChange($event.value)">
+          <mat-option *ngFor="let function of functions" [value]="function.name"> 
+            {{ function.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field small-field">

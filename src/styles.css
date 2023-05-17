@@ -1,7 +1,7 @@
 
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
-body { margin: 0;}
+body { margin: 0; font-family: "Calibri";}
 
   @font-face {
     font-family: "NeoFontRegular";
@@ -35,6 +35,13 @@ body { margin: 0;}
     font-style: normal;
   }
 
+  @font-face {
+    font-family: "Calibri";
+    src: url("/assets/fonts/Calibri.woff") format("woff");
+    font-style: normal;
+    font-weight: 300;
+  }
+
 mat-form-field {
     margin-right: 40px;
 }
@@ -43,7 +50,23 @@ mat-form-field {
     margin-left: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
+    font-family: "Calibri";
+}
+
+p {
+  font-family: "Calibri";
 }
 
 
+.mat-radio-button .mat-radio-outer-circle {
+  border-color: rgb(112, 201, 230) !important;
+}
+
+.mat-radio-button.mat-radio-checked .mat-radio-outer-circle {
+  border-color: rgb(112, 201, 230) !important;
+}
+
+.mat-radio-button.mat-radio-checked .mat-radio-inner-circle {
+  background-color: rgb(112, 201, 230) !important;
+}
 

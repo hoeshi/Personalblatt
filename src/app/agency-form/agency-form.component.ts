@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AGENCY_LIST } from '../lists/agency_list';
 import { Agency } from '../Models/agency.model';
+import { FUNCTION_LIST } from '../lists/function';
+import { WorkFunction } from '../Models/function.model';
 
 @Component({
   selector: 'app-agency-form',
@@ -10,8 +12,10 @@ import { Agency } from '../Models/agency.model';
 })
 export class AgencyFormComponent implements OnInit {
   agencies = AGENCY_LIST;
+  functions = FUNCTION_LIST;
   agencyControl = new FormControl();
   selectedAgency: Agency | null = null;
+  selectedFunction: WorkFunction | null = null;
   agencyForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
@@ -42,6 +46,13 @@ export class AgencyFormComponent implements OnInit {
         ...foundAgency,
         position: '', // Set a default value for the missing property 'position'
       };
+    }
+  }
+
+  onFunctionChange(functionName: string): void {
+    const foundFunction = this.functions.find(f => f.name === functionName);
+    if (foundFunction) {
+      this.selectedFunction = foundFunction;
     }
   }
 }
