@@ -7,3 +7,8 @@
     border-radius: 8px;
     cursor: pointer;
   }
+  
+  mat-label {
+    font-family: "Calibri";
+    font-size: 12;
+  }
