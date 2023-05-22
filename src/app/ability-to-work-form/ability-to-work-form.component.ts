@@ -8,17 +8,19 @@ import { FileService } from '../Controller/Services/fileservice';
   styleUrls: ['./ability-to-work-form.component.css']
 })
 export class AbilityToWorkFormComponent implements OnInit {
-  abilityToWorkForm: FormGroup;
+  abilityToWorkForm: FormGroup; // Formulargruppe für das Formular zur Arbeitsfähigkeit
 
   constructor(private fb: FormBuilder, private fileService: FileService) {
+    // Initialisierung des Formulars
     this.abilityToWorkForm = this.fb.group({
-      selected: ['']
+      selected: [''] // Eingabefeld für die Auswahl (Standardwert: leer)
     });
   }
 
   ngOnInit(): void {
+    // Reaktion auf Änderungen des Eingabefelds 'selected'
     this.abilityToWorkForm.get('selected')!.valueChanges.subscribe(val => {
-      console.log(val);
+      console.log(val); // Ausgabe der aktuellen Auswahl in der Konsole
     });
   }
 
@@ -27,7 +29,7 @@ export class AbilityToWorkFormComponent implements OnInit {
     const files = input.files;
     if (files) {
       const fileList = Array.from(files);
-      this.fileService.addFiles(fileList);
+      this.fileService.addFiles(fileList); // Hochladen der ausgewählten Dateien mithilfe des FileService
     }
   }
 }

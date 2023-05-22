@@ -46,9 +46,9 @@
 
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>PLZ</mat-label>
-        <input matInput formControlName="postalCode">
-        <mat-error *ngIf="personalInformationForm.get('postalCode')?.invalid && personalInformationForm.get('postalCode')?.touched">
-          {{ validationService.getInvalidPostalCodeErrorMessage('PLZ') }}
+        <input matInput formControlName="zipCode">
+        <mat-error *ngIf="personalInformationForm.get('zipCode')?.invalid && personalInformationForm.get('zipCode')?.touched">
+          {{ validationService.getInvalidZipCodeErrorMessage('PLZ') }}
         </mat-error>
       </mat-form-field>
 
@@ -152,8 +152,7 @@
         <mat-radio-button value="no">Nein</mat-radio-button>
       </mat-radio-group>
       
-      <div class="movedRow"></div>
-        
+      <div class="movedRow">   
         <div *ngIf="personalInformationForm.get('movedLastYear')?.value === 'yes'">
           <mat-form-field appearance="outline" class="input-field wider-field">
             <mat-label>Zuzug von</mat-label>
@@ -166,31 +165,40 @@
             <mat-datepicker-toggle matSuffix [for]="movedPicker"></mat-datepicker-toggle>
             <mat-datepicker #movedPicker></mat-datepicker>
           </mat-form-field>
-        </div>
 
-        <p>Upload Betreibungsregisterauszug vorangegangener Wohnsitz</p>
+          <p>Laden Sie den Betreibungsregisterauszug des vorangeganen Wohnsitzes hoch.</p>
           <label for="file-upload-vorwohnsitz" class="upload-label">
             Datei auswählen
           </label>
           <input type="file" id="file-upload-vorwohnsitz" name="vorangegangenerWohnsitz" class="upload-input" multiple (change)="uploadFiles($event)">
+          
+        </div>
+      </div>
+        
+     
+
+       
     
-          <p>Upload Betreibungsregisterauszug</p>
+          <p>Laden Sie den Betreibungsregisterauszug hoch.</p>
           <label for="file-upload-betreibungsregister" class="upload-label">
             Datei auswählen
           </label>
           <input type="file" id="file-upload-betreibungsregister" name="Betreibungsregisterauszug" class="upload-input" multiple (change)="uploadFiles($event)">
     
-          <p>Upload ID/Ausweis</p>
+          <p>Laden Sie Ihre ID oder Ausweis hoch</p>
           <label for="file-upload-id" class="upload-label">
             Datei auswählen
           </label>
           <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
 
-          <p>Upload Ansässigkeitsbescheinigung</p>
-          <label for="file-upload-ansässigkeitsbescheinigung" class="upload-label" *ngIf="personalInformationForm.get('permit')?.value === 'G'">
+          <div *ngIf="personalInformationForm.get('permit')?.value === 'G'">
+            <p>Laden Sie Ihre Ansässigkeitsbescheinigung hoch</p>
+          <label for="file-upload-ansässigkeitsbescheinigung" class="upload-label" >
             Datei auswählen
           </label>
           <input type="file" id="file-upload-ansässigkeitsbescheinigung" name="Ansässigkeitsbescheinigung" class="upload-input" multiple (change)="uploadFiles($event)">
+        </div>
+          
     
         <div *ngIf="personalInformationForm.get('civilStatus')?.value ==='verheiratet'">
           <app-spouse-form></app-spouse-form>

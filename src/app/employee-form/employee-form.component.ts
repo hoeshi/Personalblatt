@@ -12,10 +12,11 @@ export class EmployeeFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    // Initialisierung der appComponent-Eigenschaft mit dem übergebenen Wert
     this.appComponent = this.appComponent;
-    
   }
 
+  // Sendet die PDF-Anfrage an die appComponent
   send() {
     this.appComponent.FileAsPDF();
   }

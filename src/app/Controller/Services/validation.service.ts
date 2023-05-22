@@ -19,13 +19,13 @@ export class ValidationService {
     };
   }
 
-  public validatePostalCode(fieldName: string) {
+  public validateZipCode(fieldName: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
       if (!value || /^[0-9]+$/.test(value)) {
         return null;
       } else {
-        return { invalidPostalCode: `${fieldName} ist ungültig. Es sind nur Zahlen erlaubt.` };
+        return { invalidZipCode: `${fieldName} ist ungültig. Es sind nur Zahlen erlaubt.` };
       }
     };
   }
@@ -55,7 +55,7 @@ export class ValidationService {
     return `Das Feld ${fieldName} ist erforderlich.`;
   }
 
-  public getInvalidPostalCodeErrorMessage(fieldName: string): string {
+  public getInvalidZipCodeErrorMessage(fieldName: string): string {
     return `Ungültige Postleitzahl im Feld ${fieldName}.`;
   }
 

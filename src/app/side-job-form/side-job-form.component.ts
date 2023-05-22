@@ -7,14 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./side-job-form.component.css']
 })
 export class SideJobFormComponent implements OnInit {
-  sideJobForm!: FormGroup;
+  sideJobForm!: FormGroup; // Das Formular für Nebenjobs
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.sideJobForm = this.fb.group({
-      selected: ['', Validators.required],
-      jobType: ['' , Validators.required]
+      selected: ['', Validators.required], // Feld für die ausgewählte Option, mit Validierung erforderlich
+      jobType: ['' , Validators.required] // Feld für den Jobtyp, mit Validierung erforderlich
     });
   }
 }

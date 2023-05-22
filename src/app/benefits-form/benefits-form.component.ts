@@ -10,10 +10,13 @@ export class BenefitsFormComponent implements OnInit {
   benefitsForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
+    // Initialisierung des benefitsForm-Formulars mithilfe des FormBuilder
     this.benefitsForm = this.fb.group({
-      selected: ['']
+      selected: [''] // Erzeugung eines Formularelements "selected" mit anfänglichem Wert ''
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Leer, da keine spezifische Initialisierungslogik benötigt wird
+  }
 }

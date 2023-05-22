@@ -28,6 +28,7 @@ export class SpouseFormComponent implements OnInit {
   constructor(public validationService: ValidationService, private fileService: FileService) { }
 
   ngOnInit(): void {
+    // Initialisierung des Formulars und der Validatoren
     this.spouseForm = new FormGroup({
       firstName: new FormControl(this.spouse.firstName, [Validators.required, this.validationService.validateText.bind(this.validationService, 'Vorname')]),
       lastName: new FormControl(this.spouse.lastName, [Validators.required, this.validationService.validateText.bind(this.validationService, 'Name')]),
@@ -45,11 +46,13 @@ export class SpouseFormComponent implements OnInit {
       incomeType: new FormControl(this.spouse.incomeType)
     });
 
+    // Abonnement der Änderungen des Länder-Auswahlfelds
     this.countryControl.valueChanges.subscribe(val => {
       this.selectedCountry = val;
     });
   }
 
+  // Hochladen von Dateien
   uploadFiles(event: Event): void {
     const input = event.target as HTMLInputElement;
     const files = input.files;

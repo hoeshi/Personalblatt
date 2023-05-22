@@ -11,21 +11,21 @@ import { WorkFunction } from '../Models/function.model';
   styleUrls: ['./agency-form.component.css']
 })
 export class AgencyFormComponent implements OnInit {
-  agencies = AGENCY_LIST;
-  functions = FUNCTION_LIST;
-  agencyControl = new FormControl();
-  selectedAgency: Agency | null = null;
-  selectedFunction: WorkFunction | null = null;
-  agencyForm!: FormGroup;
+  agencies = AGENCY_LIST; // Liste der Agenturen
+  functions = FUNCTION_LIST; // Liste der Arbeitsfunktionen
+  agencyControl = new FormControl(); // Formularsteuerelement für die Auswahl der Agentur
+  selectedAgency: Agency | null = null; // Ausgewählte Agentur
+  selectedFunction: WorkFunction | null = null; // Ausgewählte Arbeitsfunktion
+  agencyForm!: FormGroup; // Formulargruppe für das Agenturformular
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.agencyForm = this.fb.group({
-      position: ['', Validators.required],
-      entryDate: ['', Validators.required],
-      employmentPercentage: ['', Validators.required],
-      selectedAgency: ['', Validators.required]
+      position: ['', Validators.required], // Eingabefeld für die Position (erforderlich)
+      entryDate: ['', Validators.required], // Eingabefeld für das Eintrittsdatum (erforderlich)
+      employmentPercentage: ['', Validators.required], // Eingabefeld für den Beschäftigungsprozentsatz (erforderlich)
+      selectedAgency: ['', Validators.required] // Eingabefeld für die ausgewählte Agentur (erforderlich)
     });
 
     this.agencyControl.valueChanges.subscribe(val => {
@@ -33,7 +33,7 @@ export class AgencyFormComponent implements OnInit {
       if (foundAgency) {
         this.selectedAgency = {
           ...foundAgency,
-          position: '', // Set a default value for the missing property 'position'
+          position: '', // Setze einen Standardwert für die fehlende Eigenschaft 'position'
         };
       }
     });
@@ -44,7 +44,7 @@ export class AgencyFormComponent implements OnInit {
     if (foundAgency) {
       this.selectedAgency = {
         ...foundAgency,
-        position: '', // Set a default value for the missing property 'position'
+        position: '', // Setze einen Standardwert für die fehlende Eigenschaft 'position'
       };
     }
   }

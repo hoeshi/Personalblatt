@@ -22,7 +22,7 @@ export class AppComponent {
 
   constructor(private fileService: FileService) {}
   
-  
+  // Erzeugt die PDF-Datei
   public FileAsPDF() {
     const formContainer = document.getElementById('pdfTable');
   
@@ -40,6 +40,7 @@ export class AppComponent {
     }
   }
   
+  // Sendet die PDF per E-Mail
   public sendPDFEmail(): void {
     const subject = 'Personaldaten';
     const body = '';
@@ -51,6 +52,7 @@ export class AppComponent {
     window.open(mailtoLink, '_blank');
   }
 
+  // Erstellt ein ZIP-Archiv mit heruntergeladenen Dateien und lädt es herunter
   createZipAndDownload(): void {
     const files = this.fileService.getFiles();
 
@@ -85,6 +87,4 @@ export class AppComponent {
       });
     });
   }
-  
-
 }

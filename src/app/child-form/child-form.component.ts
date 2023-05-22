@@ -46,6 +46,7 @@ export class ChildFormComponent {
       this.children.push(Child.toFormGroup(new Child('', '', new Date(), '', 0)));
     }
   } 
+  
   uploadFiles(event: Event): void {
     const input = event.target as HTMLInputElement;
     const files = input.files;
