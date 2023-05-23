@@ -1,18 +1,18 @@
-<div class="personal-information" id="pdfTable" #pdfTable>
+<div class="spouse">
   <form [formGroup]="spouseForm">
     <div>
       <h2>Angaben Ehepartner</h2>
     </div>
-    
     <div class="first-row">
       <mat-form-field appearance="outline" class="input-field wider-field">
+        <!-- Vorname -->
         <mat-label>Vorname</mat-label>
         <input matInput formControlName="firstName">
         <mat-error *ngIf="spouseForm.get('firstName')?.invalid && spouseForm.get('firstName')?.touched">
           {{ validationService.getRequiredErrorMessage('Vorname') }}
         </mat-error>
       </mat-form-field>
-
+      <!-- Name -->
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Name</mat-label>
         <input matInput formControlName="lastName">
@@ -20,9 +20,9 @@
           {{ validationService.getRequiredErrorMessage('Name') }}
         </mat-error>
       </mat-form-field>
-
+      <!-- Geburtsdatum -->
       <mat-form-field appearance="outline" class="input-field middle-field">
-        <mat-label>Datum wählen</mat-label>
+        <mat-label>Geburtsdatum</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="birthdate">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -34,6 +34,7 @@
     </div>
 
     <div class="second-row">
+      <!-- Nationalität -->
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Nationalität</mat-label>
         <mat-select formControlName="country">
@@ -46,6 +47,7 @@
         </mat-error>
       </mat-form-field>
 
+      <!-- Heimatort -->
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Heimatort</mat-label>
         <input matInput formControlName="homeTown">
@@ -54,7 +56,7 @@
         </mat-error>
       </mat-form-field>
 
-      
+      <!-- Konfession -->
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Konfession</mat-label>
         <mat-select formControlName="religion">
@@ -69,12 +71,13 @@
     </div>
 
     <div class="third-row">
-      
+      <!-- AHV -->
     <mat-form-field appearance="outline" class="input-field wider-field">
       <mat-label>AHV</mat-label>
       <input matInput formControlName="ahv">
     </mat-form-field>
 
+      <!-- Bewilligung -->
       <mat-form-field appearance="outline" *ngIf="spouseForm.get('country')?.value && spouseForm.get('country')?.value !== 'Schweiz'" class="input-field wider-field">
         <mat-label>Bewilligung</mat-label>
         <mat-select formControlName="permit">
@@ -85,12 +88,14 @@
       </mat-form-field>
    </div>
     
+    <!-- Frage, ob Ehepartner Beschäftigung hat -->
     <p>Hat Ihr Ehepartner eine Beschäftigung?</p>
     <mat-radio-group formControlName="employed" aria-label="Select an option">
       <mat-radio-button value="yes">Ja</mat-radio-button>
       <mat-radio-button value="no">Nein</mat-radio-button>
     </mat-radio-group>
     
+    <!-- Wenn ja erscheint Haupt oder Nebenbeschäftigung-->
     <div *ngIf="spouseForm.get('employed')?.value === 'yes'">
       <div class="fourth-row">
         <mat-form-field appearance="outline">
@@ -101,6 +106,7 @@
           </mat-error>
         </mat-form-field>
     
+        <!-- Beginn der Tätigkeit-->
         <mat-form-field appearance="outline">
           <mat-label>Beginn der Tätigkeit</mat-label>
           <input matInput [matDatepicker]="employmentStartDatePicker" formControlName="employmentStartDate">
@@ -112,6 +118,7 @@
         </mat-form-field>
       </div>    
       
+      <!-- Arbeitsort -->
       <mat-form-field appearance="outline">
         <mat-label>Arbeitsort</mat-label>
         <input matInput formControlName="employmentLocation">
@@ -120,6 +127,7 @@
         </mat-error>
       </mat-form-field>
 
+      <!-- Ende der Tätigkeit -->
       <mat-form-field appearance="outline">
         <mat-label>Ende der Tätigkeit</mat-label>
         <input matInput [matDatepicker]="employmentEndDatePicker" formControlName="employmentEndDate">
@@ -130,6 +138,7 @@
         </mat-error>
       </mat-form-field>
     
+      <!-- Art des Einkommens -->
       <p>Art des Einkommens</p>
       <mat-radio-group formControlName="incomeType" aria-label="Select an option">
         <mat-radio-button value="1">Lohn oder Ersatzeinkommen (Taggeld einer Versicherung)</mat-radio-button>
@@ -141,16 +150,17 @@
       </mat-error>
     </div>
     
+    <!-- Uploadfelder ID, AHV -->
     <p>Upload ID/Ausweis</p>
           <label for="file-upload-id" class="upload-label">
             Datei auswählen
           </label>
-          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
+        <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
     <p>Upload AHV</p>
           <label for="file-upload-id" class="upload-label">
             Datei auswählen
           </label>
-          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
-      </form>
-  </div>
+        <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
+    </form>
+</div>
   
