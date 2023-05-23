@@ -1,5 +1,6 @@
 <mat-card>
     <mat-card-content>
+      <!-- Formulare für persönliche Informationen, Nebenjob, Kinder, Bank- und Versicherungsdaten, Arbeitsfähigkeit, Leistungen, Agentur -->
       <app-personal-information-form></app-personal-information-form>
       <app-side-job-form></app-side-job-form>
       <app-child-form></app-child-form>
@@ -9,6 +10,7 @@
       <app-agency-form></app-agency-form>
     </mat-card-content>
   
+    <!-- Formular für Ort und Datum -->
     <div>
       <form>
         <div>
@@ -24,7 +26,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-  
+          <!-- Knopf zum Herunterladen des Formulars -->
           <button mat-raised-button class="custom-button" (click)="send()">Senden</button>
           
         </div>

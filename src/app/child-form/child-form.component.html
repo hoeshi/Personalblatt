@@ -1,20 +1,23 @@
 <div class="child-form">
+  <div class="child-form">
+  <!-- Frage nach Kindern -->
   <p>Haben Sie Kinder?</p>
   <mat-radio-group [(ngModel)]="selectedChild" aria-label="Select an option">
     <mat-radio-button value="yes">Ja</mat-radio-button>
     <mat-radio-button value="no">Nein</mat-radio-button>
   </mat-radio-group>
-
+  
   <div *ngIf="selectedChild === 'yes'">
     <button (click)="increment()">+</button>
     <span>{{childCount}}</span>
     <button (click)="decrement()">-</button>
   </div>
-
+  <!-- Bereich für Kinderdetails (wird nur angezeigt, wenn 'Ja' ausgewählt ist) -->
   <form [formGroup]="childForm" *ngIf="selectedChild === 'yes'" #pdfContent>
     <div formArrayName="children" *ngFor="let child of children.controls; index as i">
       <div [formGroupName]="i">
         <h2>Angaben Kind {{i + 1}}</h2>
+        <!-- Angaben zu Vorname, Nachname und Geburtsdatum des Kindes -->
         <div class="first-row">
           <mat-form-field appearance="outline" class="input-field middle-field">
             <mat-label>Vorname</mat-label>
@@ -35,6 +38,7 @@
           </mat-form-field>
         </div>
 
+        <!-- Angaben zur Ausbildungsstätte und -dauer des Kindes -->
         <div class="second-row">
           <mat-form-field appearance="outline" class="input-field middle-field">
             <mat-label>Ausbildungsstätte</mat-label>
@@ -46,6 +50,8 @@
             <input matInput formControlName="duration">
           </mat-form-field>
         </div>
+
+        <!-- Upload-Bereich für Geburtsschein des Kindes -->
         <p>Geburtsschein</p>
           <label for="file-upload-id" class="upload-label">
             Datei auswählen

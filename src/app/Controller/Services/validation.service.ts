@@ -8,6 +8,7 @@ export class ValidationService {
 
   constructor() { }
 
+  // Validiert einen Textwert.
   public validateText(fieldName: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
@@ -19,6 +20,7 @@ export class ValidationService {
     };
   }
 
+  // Validiert eine Postleitzahl.
   public validateZipCode(fieldName: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
@@ -30,6 +32,7 @@ export class ValidationService {
     };
   }
 
+  // Validiert eine Telefonnummer.
   public validatePhoneNumber(fieldName: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
@@ -41,6 +44,7 @@ export class ValidationService {
     };
   }
 
+  // Validiert eine E-Mail-Adresse.
   public validateEmail(fieldName: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
@@ -51,18 +55,19 @@ export class ValidationService {
       }
     };
   }
+  // Gibt die Fehlermeldung für ein erforderliches Feld zurück.
   public getRequiredErrorMessage(fieldName: string): string {
     return `Das Feld ${fieldName} ist erforderlich.`;
   }
-
+  // Gibt die Fehlermeldung für eine ungültige Postleitzahl zurück.
   public getInvalidZipCodeErrorMessage(fieldName: string): string {
     return `Ungültige Postleitzahl im Feld ${fieldName}.`;
   }
-
+  // Gibt die Fehlermeldung für eine ungültige E-Mail-Adresse zurück.
   public getInvalidEmailErrorMessage(fieldName: string): string {
     return `Ungültige E-Mail-Adresse im Feld ${fieldName}.`;
   }
-
+  // Gibt die Fehlermeldung für eine ungültige Telefonnummer zurück.
   getInvalidPhoneNumberErrorMessage(label: string): string {
     return `${label} ist ungültig. Bitte geben Sie eine gültige Telefonnummer ein.`;
   }

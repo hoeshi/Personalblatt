@@ -12,22 +12,6 @@ body { margin: 0; font-family: "Calibri";}
   }
   
   @font-face {
-    font-family: "NeoFontNormal";
-    src: url("/assets/fonts/univiapro-light-webfont.woff2") format("woff2"),
-      url("/assets/fonts/univiapro-light-webfont.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: "NeoFontMedium";
-    src: 
-      url("/assets/fonts/UniviaPro-Medium.otf") format("woff");
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  @font-face {
     font-family: "NeoFontBold";
     src: url("/assets/fonts/univiapro-bold-webfont.woff2") format("woff2"),
       url("/assets/fonts/univiapro-bold-webfont.woff") format("woff");

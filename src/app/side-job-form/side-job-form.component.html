@@ -1,10 +1,12 @@
 <div class="sideJob-form" [formGroup]="sideJobForm">
+  <!-- Frage, ob der Mitarbeiter eine Nebenbeschäftigung hat -->
   <p>Haben Sie eine Nebenbeschäftigung?</p>
   <mat-radio-group formControlName="selected" name="sideJobRadio" aria-label="Select an option">
     <mat-radio-button value="yes">Ja</mat-radio-button>
     <mat-radio-button value="no">Nein</mat-radio-button>
   </mat-radio-group>
 
+  <!-- Wenn ja, dann welche?-->
   <div *ngIf="sideJobForm.get('selected')?.value === 'yes'" class="first-row">
     <mat-form-field appearance="outline">
       <mat-label>Welche?</mat-label>

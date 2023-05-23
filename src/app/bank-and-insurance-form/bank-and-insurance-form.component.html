@@ -2,18 +2,21 @@
   <h2>Versicherungs- und Bankdaten</h2>
   
   <form [formGroup]="bankAndInsuranceForm">
-    <div class="first-row mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop">
+    <!-- AHV Nummer des Mitarbeiters -->
+    <div class="first-row">
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>AHV</mat-label>
         <input matInput formControlName="ahv">
       </mat-form-field>
 
+      <!-- IBAN des Mitarbeiters -->
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>IBAN</mat-label>
         <input matInput formControlName="iban">
       </mat-form-field>
     </div>
 
+    <!-- Bankdaten -->
     <div class="second-row">
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Bankname</mat-label>
@@ -37,21 +40,24 @@
         <input matInput formControlName="location">
       </mat-form-field>
 
+      <!-- Lohn des Mitarbeiters -->
       <mat-form-field appearance="outline" class="input-field wider-field">
         <mat-label>Monats-/Stundenlohn (Brutto)</mat-label>
         <input matInput formControlName="salary">
       </mat-form-field>
     </div>
   </form>
-  
-  <p>Upload AHV</p>
-          <label for="file-upload-id" class="upload-label">
-            Datei auswählen
-          </label>
-          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
-          <p>Upload Bankkarte</p>
-          <label for="file-upload-id" class="upload-label">
-            Datei auswählen
-          </label>
-          <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
+
+   <!-- Upload-Bereich für AHV -->
+    <p>Upload AHV</p>
+      <label for="file-upload-id" class="upload-label">
+        Datei auswählen
+      </label>
+        <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
+    <!-- Upload-Bereich für Bankkarte -->
+    <p>Upload Bankkarte</p>
+      <label for="file-upload-id" class="upload-label">
+        Datei auswählen
+      </label>
+        <input type="file" id="file-upload-id" name="ID" class="upload-input"  multiple (change)="uploadFiles($event)">
 </div>

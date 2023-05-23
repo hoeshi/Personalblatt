@@ -2,6 +2,7 @@
   <h2>Agentur</h2>
   <form [formGroup]="agencyForm">
     <div class="first-row">
+      <!-- Funktion auswählen -->
       <mat-form-field appearance="outline" class="input-field small-field">
         <mat-label>Funktion</mat-label>
         <mat-select formControlName="selectedAgency" (selectionChange)="onFunctionChange($event.value)">
@@ -11,16 +12,19 @@
         </mat-select>
       </mat-form-field>
 
+      <!-- Eintrittsdatum eingeben -->
       <mat-form-field appearance="outline" class="input-field small-field">
         <mat-label>Eintritt</mat-label>
         <input matInput formControlName="entryDate">
       </mat-form-field> 
 
+      <!-- Anstellung in % eingeben -->
       <mat-form-field appearance="outline" class="input-field small-field">
         <mat-label>Anstellung in %</mat-label>
         <input matInput formControlName="employmentPercentage">
       </mat-form-field>
 
+      <!-- Agentur aus Dropdown auswählen -->
       <mat-form-field appearance="outline" class="input-field small-field">
         <mat-label>Agentur Dropdown</mat-label>
         <mat-select formControlName="selectedAgency" (selectionChange)="onAgencyChange($event.value)">
@@ -32,16 +36,20 @@
     </div>
 
     <div class="second-row">
+
+      <!-- Adresse anzeigen (readonly) -->
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Adresse</mat-label>
         <input matInput placeholder="Adresse" [value]="selectedAgency?.address" readonly>
       </mat-form-field>
 
+      <!-- PLZ anzeigen (readonly) -->
       <mat-form-field appearance="outline" class="input-field small-field">
         <mat-label>PLZ</mat-label>
         <input matInput [value]="selectedAgency?.zip" readonly>
       </mat-form-field>
 
+      <!-- Ort anzeigen (readonly) -->
       <mat-form-field appearance="outline" class="input-field middle-field">
         <mat-label>Ort</mat-label>
         <input matInput [value]="selectedAgency?.city" readonly>
